@@ -71,6 +71,14 @@ head title {
     font-size: 22px;
     font-weight: bold;
 }
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    text-align: left;
+}
 
 /* Стили для контента */
 .container .content h2 {
