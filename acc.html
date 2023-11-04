@@ -40,25 +40,25 @@
                 <li><a href="#">Аксессуары</a></li>
             </ul>
         </div>
-        <div class="product">
+        <div class="product" id="product-1">
             <img src="photo/podarok1.jpg" alt="Ботинки">
             <h3>Подарочный сертификат</h3>
             <span class="price">Цена: 3000</span>
             <button>Добавить в корзину</button>
         </div>
-        <div class="product">
+        <div class="product" id="product-2">
             <img src="photo/podarok2.jpg" alt="Сапоги">
             <h3>Подарочный сертификат</h3>
             <span class="price">Цена: 2000</span>
             <button>Добавить в корзину</button>
         </div>
-        <div class="product">
+        <div class="product" id="product-3">
             <img src="photo/termo.jpg" alt="Сапоги">
             <h3>Термобелье</h3>
             <span class="price">Цена: 1200</span>
             <button>Добавить в корзину</button>
         </div>
-        <div class="product">
+        <div class="product" id="product-4">
             <img src="photo/termo1.jpg" alt="Сапоги">
             <h3>Термобелье</h3>
             <span class="price">Цена: 3000</span>
@@ -69,6 +69,30 @@
     <footer class="footer">
         Все права защищены законодательством Российской Федерации ©
     </footer>
+    <script>
+        async function fetchProducts() {
+            try {
+                const response = await fetch('http://localhost:5235/api/Product/GetAllProduct');
+                if (!response.ok) {
+                    throw new Error('Ошибка HTTP ' + response.status);
+                }
+                const responseData = await response.json();
+                const filteredData = responseData.data.filter(product => product.id >= 32);
+                // Обработка полученных данных и отображение на странице
+                filteredData.forEach((product, index) => {
+                    const productItem = document.getElementById('product-' + (index + 1)); // product-1, product-2, и т.д.
+                    if (productItem) {
+                        productItem.querySelector('img').src = product.imageUrl1;
+                        productItem.querySelector('h3').textContent = product.name;
+                        productItem.querySelector('.price').textContent = 'Цена: ' + product.price;
+                    }
+                });
+            } catch (error) {
+                console.error('Произошла ошибка:', error.message);
+            }
+        }
+        fetchProducts();
+    </script>
 </body>
 
 </html>

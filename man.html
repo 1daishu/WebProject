@@ -41,29 +41,29 @@
                 <li><a href="#">Кроссовки</a></li>
             </ul>
         </div>
-        <div class="product">
-            <img src="photo/man_botinki.jpg" alt="Ботинки">
+        <div class="product" id="product-1">
+            <img src="photo/man_botinki.jpg" alt="Ботинки" width="250px">
             <h3>Ботинки</h3>
             <p>Размеры: 36, 37, 38</p>
             <span class="price">Цена: 9999</span>
             <button>Добавить в корзину</button>
         </div>
-        <div class="product">
-            <img src="photo/manBot2.jpg" alt="Сапоги">
+        <div class="product" id="product-2" >
+            <img src="photo/manBot2.jpg" alt="Сапоги" width="250px">
             <h3>Кроссовки</h3>
             <p>Размеры: 38, 39, 40</p>
             <span class="price">Цена: 7999</span>
             <button>Добавить в корзину</button>
         </div>
-        <div class="product">
-            <img src="photo/manBot3.jpg" alt="Сапоги">
+        <div class="product" id="product-3">
+            <img src="photo/manBot3.jpg" alt="Сапоги" width="250px">
             <h3>Сапоги</h3>
             <p>Размеры: 42, 43, 44</p>
             <span class="price">Цена: 9999</span>
             <button>Добавить в корзину</button>
         </div>
-        <div class="product">
-            <img src="photo/manBot4.jpg" alt="Сапоги">
+        <div class="product" id="product-4">
+            <img src="photo/manBot4.jpg" alt="Сапоги" width="250px">
             <h3>Сапоги</h3>
             <p>Размеры: 41, 42, 45</p>
             <span class="price">Цена: 4200</span>
@@ -74,6 +74,33 @@
     <footer class="footer">
         Все права защищены законодательством Российской Федерации ©
     </footer>
+    <script>
+        async function fetchProducts() {
+            try {
+                const response = await fetch('http://localhost:5235/api/Product/GetAllProduct');
+                if (!response.ok) {
+                    throw new Error('Ошибка HTTP ' + response.status);
+                }
+                const responseData = await response.json();
+                const filteredData = responseData.data.filter(product => product.id >= 15);
+                // Обработка полученных данных и отображение на странице
+                filteredData.forEach((product, index) => {
+                    const productItem = document.getElementById('product-' + (index + 1)); // product-1, product-2, и т.д.
+                    if (productItem) {
+                        productItem.querySelector('img').src = product.imageUrl1;
+                        productItem.querySelector('h3').textContent = product.name;
+                        productItem.querySelector('p').textContent = 'Размеры: ' + product.description;
+                        productItem.querySelector('.price').textContent = 'Цена: ' + product.price;
+                    }
+                });
+            } catch (error) {
+                console.error('Произошла ошибка:', error.message);
+            }
+        }
+
+        // Вызов функции для получения и отображения данных
+        fetchProducts();
+    </script>
 </body>
 
 </html>
