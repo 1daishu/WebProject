@@ -6,25 +6,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="style/style2.css">
-  <script defer src="login-page.js"></script>
 </head>
 
 <body>
   <main id="main-holder">
-    <h1 id="login-header">Регистрация</h1>
-    
-    <div id="login-error-msg-holder">
-      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
-    </div>
+    <h1 id="Sign">Вход</h1>
     
     <form id="login-form">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Имя">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Почта">
+      <input type="text" name="email" id="email-field" class="login-form-field" placeholder="Адрес электронной почты">
       <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Пароль">
-      <input type="submit" value="Зарегистрироваться" id="login-form-submit">
+      <input type="submit" value="Войти" id="login-form-submit">
     </form>
-  
   </main>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Предотвратить стандартное поведение формы (перезагрузку страницы)
+
+        const email = document.getElementById("email-field").value;
+        const password = document.getElementById("password-field").value;
+
+        // Создаем URL с параметрами email и password
+        const url = `http://localhost:7129/api/UserAuth/Login?email=${email}&password=${password}`;
+
+        // Отправка GET-запроса
+        fetch(url, {
+            method: "GET",
+            headers: {
+                "accept": "application/json" // Используем application/json
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else if (response.status === 401) {
+                console.log("Логин или пароль неверны.");
+            } else {
+                console.error("Произошла ошибка при выполнении запроса.");
+            }
+        })
+        .then(data => {
+            if (data && data.statusCode === 200) {
+                console.log(data.description); // Вывести "Вы вошли" или выполнить другие действия
+            }
+        })
+        .catch(error => {
+            console.error("Произошла ошибка при выполнении запроса.", error);
+        });
+    });
+  </script>
 </body>
 
 </html>
