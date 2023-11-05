@@ -18,6 +18,14 @@ document.getElementById("login-form").addEventListener("submit", function (event
     .then(data => {
         if (data && data.statusCode === 200) {
             console.log(data.description); // Вывести "Вы вошли" или выполнить другие действия
+            // Добавьте здесь код для отображения сообщения на странице
+            // Например, создайте элемент на странице для отображения сообщения
+            // и добавьте его в DOM
+            const messageElement = document.createElement("p");
+            messageElement.textContent = "Вы вошли";
+            // Вставьте сообщение на страницу
+            const mainHolder = document.getElementById("main-holder");
+            mainHolder.appendChild(messageElement);
         } else if (data && data.statusCode === 401) {
             console.log("Логин или пароль неверны.");
         } else {

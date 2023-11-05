@@ -27,7 +27,7 @@
         const password = document.getElementById("password-field").value;
 
         // Создаем URL с параметрами email и password
-        const url = `http://localhost:7129/api/UserAuth/Login?email=${email}&password=${password}`;
+        const url = `https://localhost:7129/api/UserAuth/Login?email=${email}&password=${password}`;
 
         // Отправка GET-запроса
         fetch(url, {

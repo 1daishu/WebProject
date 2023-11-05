@@ -6,6 +6,25 @@
     <title>Сити-Класс</title>
     <link rel="stylesheet" type="text/css" href="style/style1.css">
     <link rel="icon" type="image/x-icon" href="photo/yarlik.jpg">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="photo/yarlik.jpg">
+    <style>
+        /* Стили для вашего слайдера */
+        .slider-container {
+            width: 50%; /* Ширина контейнера */
+            margin: 0 auto;
+        }
+        .slider {
+            display: flex;
+        }
+        .slider img {
+            width: 50px;
+            margin: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -68,11 +87,21 @@
             <span class="price">Цена: 7999</span>
             <button>Добавить в корзину</button>
         </div>        
-        
     </div>
     <footer class="footer">
         Все права защищены законодательством Российской Федерации ©
     </footer>
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                infinite: true,
+                slidesToShow: 3, // Количество слайдов для отображения одновременно
+                slidesToScroll: 1, // Количество слайдов для прокрутки одновременно
+                prevArrow: '<button class="prev">Предыдущий</button>',
+                nextArrow: '<button class="next">Следующий</button>',
+            });
+        });
+    </script>
     <script>
          async function fetchProducts() {
     try {

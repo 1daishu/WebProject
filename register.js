@@ -1,31 +1,25 @@
-document.getElementById("registration-form").addEventListener("submit", function (event) {
-    event.preventDefault(); // Предотвратить стандартное поведение формы (перезагрузку страницы)
+const email = 'dens'; // Замените на введенный email
+const password = 'dens'; // Замените на введенный пароль
 
-    const formData = new FormData(event.target);
-    const data = {
-        name: formData.get("name"),
-        Email: formData.get("username"),
-        Password: formData.get("password")
-    };
+const url = `http://localhost:3000/api/checkUser?email=${email}&password=${password}`;
 
-    // Отправка POST-запроса на сервер
-    fetch("http://localhost:5235/api/UserAuth/Register", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        if (result && result.errors && result.errors.Email) {
-            console.log("Ошибки валидации Email:", result.errors.Email);
-        } else if (result) {
-            console.log("Данные успешно добавлены в базу данных", result);
-            // Дополнительные действия после успешной регистрации
-        } else {
-            console.error("Произошла ошибка при добавлении данных в базу данных");
-        }
-        
-    });
+fetch(url, {
+  method: 'GET',
+  headers: {
+    'accept': 'application/json'
+  }
+})
+.then(response => {
+  if (response.status === 200) {
+    console.log('Пользователь существует.');
+    // Дополнительные действия, если пользователь существует
+  } else if (response.status === 401) {
+    console.log('Пользователь не существует.');
+    // Дополнительные действия, если пользователь не существует
+  } else {
+    console.error('Произошла ошибка при выполнении запроса.');
+  }
+})
+.catch(error => {
+  console.error('Произошла ошибка при выполнении запроса.', error);
 });
