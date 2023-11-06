@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">	
+    <meta charset="UTF-8"> 
     <title>Сити-Класс</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
-	<link rel="icon" type="image/x-icon" href="photo/yarlik.jpg">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script>
+    <link rel="icon" type="image/x-icon" href="photo/yarlik.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
             const loginButton = document.getElementById("login-button");
             const registrationButton = document.getElementById("registration-button");
@@ -20,22 +24,22 @@
             });
         });
     </script>
-</head>
+</head>    
 <body>
-	<div class="header">
-		<div class="logo">
-			<img width="100px" src="photo/logo.png" alt="Логотип"width="100" height="100" >
-		</div>
-		<div class="title">
-			<h1><a href="index.html">Сити-Класс</a></h1>
-		</div>
-		<div class="login-buttons">
-			<a href="Sign.html"><button type="button">Вход</button></a>
-			<span class="divider"></span>
-			<a href="Register.html"><button type="button">Регистрация</button></a>
-		  </div>
-		
-	</div>
+    <div class="header">
+        <div class="logo">
+            <img width="100px" src="photo/logo.png" alt="Логотип"width="100" height="100" >
+        </div>
+        <div class="title">
+            <h1><a href="index.html">Сити-Класс</a></h1>
+        </div>
+        <div class="login-buttons">
+            <a href="sign.html"><button type="button">Вход</button></a>
+            <span class="divider"></span>
+            <a href="Register.html"><button type="button">Регистрация</button></a>
+          </div>
+        
+    </div>
     <div class="nav">
         <a href="woman.html">Женская обувь</a>
         <a href="man.html">Мужская обувь</a>
@@ -43,66 +47,73 @@
         <a href="acc.html">Аксессуары</a>
     </div>
     <div class="banner">
-		<a href="man.html">
-			<img src="photo/banner2(test).jpg" alt="Баннер 2">
-		</a>
-		<a href="woman.html">
-			<img src="photo/banner1(test).jpg" alt = "Баннер 3">
-		</a>
-	</div>
-	<div class="banner4">
-		<a href="bags.html">
-			<img src="photo/banner4.jpg" alt="Баннер 4" width="760" height="380">
-		</a>
-		<a href="acc.html">
-			<img src="photo/banner3.jpg" alt="Баннер 3" width="760" height="380">
-		</a>
-	</div>
-	
+        <a href="man.html">
+            <img src="photo/banner2(test).jpg" alt="Баннер 2">
+        </a>
+        <a href="woman.html">
+            <img src="photo/banner1(test).jpg" alt = "Баннер 3">
+        </a>
+    </div>
+    <div class="banner4">
+        <a href="bags.html">
+            <img src="photo/banner4.jpg" alt="Баннер 4" width="760" height="380">
+        </a>
+        <a href="acc.html">
+            <img src="photo/banner3.jpg" alt="Баннер 3" width="760" height="380">
+        </a>
+    </div>
+    <div class="center-text">
+        <p>Наши товары</p>
+    </div>
+	<marquee behavior ="altentane" direction="" scrollamount="15">
+        <img src="photo/botinki1.jpg" alt="Фото 1">
+        <img src ="photo/botinki3.jpg" alt="Фото 2">
+        <img src ="photo/botinki2.jpg" alt="Фото 3">
+        <img src ="photo/man_botinki.jpg" alt="Фото 4">
+        <img src ="photo/manBot2.jpg" alt="Фото 5">
+        <img src ="photo/manBot3.jpg" alt="Фото 5">
+        <img src="photo/manBot4.jpg " alt="Фото 6">
+    </marquee>
     <div class="container">
-		<h2>Сити Класс – интернет-магазин недорогой обуви</h2>
-		<p>
-			В нашем интернет-магазине вы можете недорого купить мужскую и женскую обувь оптом и в розницу.
-		</p>
-		<p>
-			Мы предлагаем своим покупателям:
-		</p>
-		<ul>
-			<ul>
-				<li><i class="fa fa-check"></i> Широкий ассортимент качественной обуви с фабрик Турции и Китая.</li>
-				<li><i class="fa fa-check"></i> По низким ценам: от 100 до 5000 руб.</li>
-				<li><i class="fa fa-check"></i> На любой сезон: зимнюю, летнюю, демисезонную (весеннюю – осеннюю) обувь.</li>
-				<li><i class="fa fa-check"></i> Из искусственной и натуральной кожи, экокожи, замши, текстиля.</li>
-				<li><i class="fa fa-check"></i> Различных стилей: классическую, повседневную, спортивную.</li>
-				<li><i class="fa fa-check"></i> Больших и маленьких размеров. Женская от 33, 34, 35, 36 до 39, 40, 41. Мужская от 37, 38, 39 до 46, 47, 48.</li>
-				<li><i class="fa fa-check"></i> Практичных и модных расцветок.</li>
-				
-			</ul>
-		</ul>
-		<p>
-			Удобный каталог и поиск обуви
-		</p>
-		<p>
-			Разделы каталога по полу: мужская обувь и женская обувь.
-		</p>
-		<p>
-			Разделы по типу обуви: сапоги, ботинки, туфли, босоножки, балетки, мокасины, сандалии, сабо, унты, дутики, кроссовки, кеды и т.д.
-		</p>
-		<p>
-			Фильтры: по цене, размеру, материалу, цвету, сезону и бренду.
-		</p>
-		<p>
-			Хотите купить обувь со скидкой? Посетите рубрики Распродажа и Спецпредложения.
-		</p>
-	</div>
+        <h2>Сити Класс – интернет-магазин недорогой обуви</h2>
+        <p>
+            В нашем интернет-магазине вы можете недорого купить мужскую и женскую обувь оптом и в розницу.
+        </p>
+        <p>
+            Мы предлагаем своим покупателям:
+        </p>
+        <ul>
+            <li><i class="fa fa-check"></i> Широкий ассортимент качественной обуви с фабрик Турции и Китая.</li>
+            <li><i class="fa fa-check"></i> По низким ценам: от 100 до 5000 руб.</li>
+            <li><i class="fa fa-check"></i> На любой сезон: зимнюю, летнюю, демисезонную (весеннюю – осеннюю) обувь.</li>
+            <li><i class="fa fa-check"></i> Из искусственной и натуральной кожи, экокожи, замши, текстиля.</li>
+            <li><i class="fa fa-check"></i> Различных стилей: классическую, повседневную, спортивную.</li>
+            <li><i class="fa fa-check"></i> Больших и маленьких размеров. Женская от 33, 34, 35, 36 до 39, 40, 41. Мужская от 37, 38, 39 до 46, 47, 48.</li>
+            <li><i class="fa fa-check"></i> Практичных и модных расцветок.</li>
+        </ul>
+        <p>
+            Удобный каталог и поиск обуви
+        </p>
+        <p>
+            Разделы каталога по полу: мужская обувь и женская обувь.
+        </p>
+        <p>
+            Разделы по типу обуви: сапоги, ботинки, туфли, босоножки, балетки, мокасины, сандалии, сабо, унты, дутики, кроссовки, кеды и т.д.
+        </p>
+        <p>
+            Фильтры: по цене, размеру, материалу, цвету, сезону и бренду.
+        </p>
+        <p>
+            Хотите купить обувь со скидкой? Посетите рубрики Распродажа и Спецпредложения.
+        </p>
+    </div>
     <div class="info-bar">
-		<p>Контактная информация:
-			Время работы: пн-пт с 5:00 до 13:00 (мск)
-		</p>
-	</div>
+        <p>Контактная информация:
+            Время работы: пн-пт с 5:00 до 13:00 (мск)
+        </p>
+    </div>
     <footer class="footer">
         Все права защищены законодательством Российской Федерации ©
     </footer>
-	<script src="register.js"></script>	
 </body>
 </html>

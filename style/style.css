@@ -188,6 +188,22 @@ a {
     cursor: pointer;
     font-weight: bold;
 }
+
+.center-text {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.marquee-content {
+    white-space: nowrap;
+    display: inline-block;
+}
+.marquee-content img {
+    margin-right: 10px; /* Добавьте нужный вам отступ между изображениями */
+}
 /* Стили для footer */
 .footer {
     text-align: center;
