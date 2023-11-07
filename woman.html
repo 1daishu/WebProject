@@ -47,9 +47,14 @@
         <a href="bags.html">Сумки</a>
         <a href="acc.html">Аксессуары</a>
     </div>
+    <input id="searchbar" onkeyup="search_animal()" type="text"
+    name="search" placeholder="Search product.."> 
+    <script src="search.js"></script> 
+      
     <div class ="text">  
         <h2>Женская обувь</h2>
     </div>
+    <!-- <ol id='list'> </ol> -->
     <div class="content">
         <div class="sidebar">
             <h3>Категории </h3>
@@ -92,6 +97,7 @@
     <footer class="footer">
         Все права защищены законодательством Российской Федерации ©
     </footer>
+    
     <script>
         $(document).ready(function(){
             $('.slider').slick({
