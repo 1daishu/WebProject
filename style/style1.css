@@ -213,9 +213,58 @@ a {
   .next-button {
     margin-top: 10px;
   }
+  #searchbar{ 
+    margin-left: 20%; 
+    padding:15px; 
+    border-radius: 10px; 
+    margin-bottom: 35px;
+  } 
+  .cart button {
+    background-color: black; /* Цвет фона кнопки */
+    color: #fff; /* Цвет текста */
+    border: none; /* Убираем границу кнопки */
+    padding: 10px 20px; /* Внутренний отступ кнопки */
+    border-radius: 5px; /* Закругление углов */
+    cursor: pointer; /* Курсор при наведении на кнопку */
+    font-size: 16px; /* Размер шрифта */
+}
+.cart button:hover {
+    background-color: #ff3333; /* Цвет фона кнопки при наведении */
+}
+  input[type=text] { 
+     width: 30%; 
+     -webkit-transition: width 0.15s ease-in-out; 
+     transition: width 0.15s ease-in-out; 
+  } 
+
+  /* When the input field gets focus, 
+       change its width to 100% */
+  input[type=text]:focus { 
+    width: 70%; 
+  } 
+
+ #list{ 
+   font-size:  1.5em; 
+   margin-left: 90px; 
+  } 
+
+.animals{ 
+  display: list-item;     
+ } 
 /* Стили для footer */
+/* .footer {
+    
+    text-align: center;
+    padding: 20px 0;
+    background-color: #fff;
+    color: #333;
+    font-style: bold;
+    font-size: 16px;
+} */
 .footer {
     text-align: center;
+    display: flex;
+    align-items: end;
     padding: 20px 0;
     background-color: #fff;
     color: #333;

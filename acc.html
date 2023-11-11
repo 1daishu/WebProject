@@ -12,13 +12,11 @@
         <div class="logo">
             <img width="100px" src="photo/logo.png" alt="Логотип">
         </div>
-        <div class="title">
+        <div class="title" >
             <h1><a href="index.html">Сити-Класс</a></h1>
         </div>
-        <div class="login-buttons">
-            <input type="submit" value="Вход">
-            <span class="divider"></span>
-            <button type="button">Регистрация</button>
+        <div class="cart">
+            <button type="button">Корзина</button>
         </div>
     </div>
     <div class="nav">
@@ -30,6 +28,8 @@
     <div class ="text">  
         <h2> Аксессуары </h2>
     </div>
+    <input id="searchbar" onkeyup="search_product()" type="text" name="search" placeholder="Поиск товара..">
+    <script src="search.js"></script> 
     <div class="content">
         <div class="sidebar">
             <h3>Категории </h3>

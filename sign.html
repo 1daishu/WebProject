@@ -43,8 +43,15 @@
                 }
             })
             .then(data => {
-                if (data && data.statusCode === 200) {
-                    console.log(data.description);
+                if (data && data.data) {
+                    console.log("Вы вошли!");
+                    const newUserId = data.data + 1;
+                    // Сохраняем ID пользователя в localStorage
+                    localStorage.setItem("userId", newUserId);
+
+                    // Выводим ID в консоль
+                    console.log("ID пользователя:", newUserId);
+
                     updateLoginMessage("Вы вошли!");
                 }
             })
