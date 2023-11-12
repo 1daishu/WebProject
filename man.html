@@ -17,8 +17,14 @@
             <h1><a href="index.html">Сити-Класс</a></h1>
         </div>
         <div class="cart">
-            <button type="button">Корзина</button>
+            <button type="button" onclick="goToCart()">Корзина</button>
         </div>
+        <script>
+            function goToCart() {
+                // Переход на страницу cart.html
+                window.location.href = 'cart.html';
+            }
+        </script>
     </div>
     <div class="nav">
         <a href="woman.html">Женская обувь</a>
@@ -47,30 +53,63 @@
             <h3>Ботинки</h3>
             <p>Размеры: 36, 37, 38</p>
             <span class="price">Цена: 9999</span>
-            <button>Добавить в корзину</button>
+            <button onclick="addToCart(15)">Добавить в корзину</button>
         </div>
         <div class="product" id="product-2" >
             <img src="photo/manBot2.jpg" alt="Сапоги" width="250px">
             <h3>Кроссовки</h3>
             <p>Размеры: 38, 39, 40</p>
             <span class="price">Цена: 7999</span>
-            <button>Добавить в корзину</button>
+            <button onclick="addToCart(18)">Добавить в корзину</button>
         </div>
         <div class="product" id="product-3">
             <img src="photo/manBot3.jpg" alt="Сапоги" width="250px">
             <h3>Сапоги</h3>
             <p>Размеры: 42, 43, 44</p>
             <span class="price">Цена: 9999</span>
-            <button>Добавить в корзину</button>
+            <button onclick="addToCart(19)">Добавить в корзину</button>
         </div>
         <div class="product" id="product-4">
             <img src="photo/manBot4.jpg" alt="Сапоги" width="250px">
             <h3>Сапоги</h3>
             <p>Размеры: 41, 42, 45</p>
             <span class="price">Цена: 4200</span>
-            <button>Добавить в корзину</button>
+            <button onclick="addToCart(20)">Добавить в корзину</button>
         </div>
-        
+        <script>
+            function addToCart(productId) {
+                // Получаем userId из локального хранилища, предположим, что он уже сохранен после входа пользователя
+                const userId = localStorage.getItem("userId");
+    
+                // Формируем URL для POST-запроса
+                const url = `https://localhost:7129/api/Product/AddProductToCart?userId=${userId}&productId=${productId}`;
+    
+                // Выполняем POST-запрос    
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    // Отправляем пустое тело запроса, так как параметры уже в URL
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.statusCode === 200) {
+                        console.log("Продукт добавлен в корзину!");
+                        alert("Продукт добавлен в корзину!");
+                    } else {
+                        console.error("Произошла ошибка:", data.description);
+                        alert(`Ошибка: ${data.description}`);
+                    }
+                })
+                .catch(error => {
+                    console.error("Произошла ошибка при выполнении запроса:", error);
+                    alert("Произошла ошибка при выполнении запроса.");
+                });
+            }
+        </script>
     </div>
     <footer class="footer">
         Все права защищены законодательством Российской Федерации ©

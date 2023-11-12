@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="style/styleCart.css">
+</head>
+
+<body>
+    <main id="main-holder">
+        <h1>Корзина</h1>
+
+        <!-- Содержимое корзины -->
+        <div id="cart-container">
+            <!-- Продукты в корзине будут добавлены сюда -->
+        </div>
+
+        <!-- Итоговая стоимость -->
+        <div id="total-price">
+            <p>Итоговая стоимость: <span id="total-amount">$0.00</span></p>
+        </div>
+
+        <!-- Кнопка оформления заказа -->
+        <button id="checkout-button">Оформить заказ</button>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartContainer = document.getElementById('cart-container');
+            const totalAmountSpan = document.getElementById('total-amount');
+            const checkoutButton = document.getElementById('checkout-button');
+
+            // Получаем userId из локального хранилища
+            
+            const userId = localStorage.userId-1
+            if (!userId) {
+                console.error("UserId is not available in local storage.");
+                return;
+            }
+
+            const userIdAsNumber = parseInt(userId, 10);
+
+            if (isNaN(userIdAsNumber)) {
+                console.error("UserId is not a valid number.");
+                return;
+            }
+
+            // Функция для выполнения GET-запроса
+            function fetchCartItems() {
+                const url = `https://localhost:7129/api/Product/GetAllProductByCart?userId=${userId}`;
+
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Ошибка HTTP: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Обновляем cartItems и отображаем их
+                        cartItems = data.data || []; // Если данные не определены, устанавливаем пустой массив
+
+                        renderCartItems();
+                    })
+                    .catch(error => {
+                        console.error('Ошибка при выполнении GET-запроса:', error);
+                    });
+            }
+
+            // Пример данных о продуктах в корзине
+            let cartItems = [];
+
+            // Функция для отображения продуктов в корзине
+            function renderCartItems() {
+                cartContainer.innerHTML = ""; // Очищаем контейнер перед обновлением
+
+                let totalAmount = 0;
+
+                cartItems.forEach(item => {
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
+
+                    const productName = document.createElement('span');
+                    productName.textContent = item.name || 'Название не указано';
+
+                    const productPrice = document.createElement('span');
+                    productPrice.textContent = `Р${(item.price || 0).toFixed(2)}`;
+                    productDiv.appendChild(productName);
+                   
+                    productDiv.appendChild(productPrice);
+                   
+                    
+                    cartContainer.appendChild(productDiv);
+
+                    totalAmount += (item.price || 0) * (item.quantity || 1);
+                });
+
+                totalAmountSpan.textContent = `Р ${totalAmount.toFixed(2)}`;
+            }
+
+            // Вызываем функцию для отображения продуктов при загрузке страницы
+            fetchCartItems();
+
+            // Обработчик кнопки оформления заказа
+            checkoutButton.addEventListener('click', function () {
+                alert('Заказ успешно оформлен!');
+            });
+        });
+    </script>
+</body>
+
+</html>
